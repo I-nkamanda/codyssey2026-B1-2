@@ -39,7 +39,7 @@ if [[ ! -f "$key_dir/secret.key" ]]; then #secret.key 파일이 존재하지 않
     (umask 0077; printf '%s\n' 'agent_api_key_test' >"$key_dir/secret.key") # umask는 0777(허벌) 에서 0077을 빼니까 결과적으로 -0700 권한으로 뒤에 있는 파일을 만든다는 이야기. 소유자만 모든 권한을 가지고 있다는 것. 그 뒤에는 'agent_api_key_test' 문자열을 $key_dir 디렉토리 속 secret.key 파일에 저장한다.
 fi
 
-printf 'Case=%s MEMORY_LIMIT=%s CPU_MAX_OCCUPY=%s MULTI_THREAD_ENABLE=%s\n' \ 
+printf 'Case=%s MEMORY_LIMIT=%s CPU_MAX_OCCUPY=%s MULTI_THREAD_ENABLE=%s\n' \
     "$case_name" "$memory_limit" "$cpu_limit" "$multi_thread" #case_name, memory_limit, cpu_limit, multi_thread 변수의 값을 출력한다. - 위의 테스트 케이스 이름과 조건을 쫙 출력해주는 것이다.
 # 이 파트는, 이번 문제 명세서에서 요구하는 환경 변수들을 설정하는 부분이다. AGENT_HOME, AGENT_PORT, AGENT_UPLOAD_DIR, AGENT_KEY_PATH, AGENT_LOG_DIR, MEMORY_LIMIT, CPU_MAX_OCCUPY, MULTI_THREAD_ENABLE 환경 변수를 설정한다. 이 환경 변수들은 agent-leak-app이 실행될 때 사용된다.
 export AGENT_HOME="$agent_home"
